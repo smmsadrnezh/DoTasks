@@ -9,11 +9,11 @@
         <form action="." method="post">
             {% csrf_token %}
             <div class="input">
-                {{ form.title }}
+                {{ newTaskForm.title }}
                 <input type="submit" value="Add">
             </div>
         </form>
-        <form id="task-list">
+        <form action="." method="post" id="task-list">
             <!-- To Do List Item -->
             <ul>
                 {% for item in task %}

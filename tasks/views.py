@@ -5,19 +5,19 @@ from tasks.forms import taskForm
 
 
 def tasks(request, listid):
-    form = taskForm()
+    newTaskForm = taskForm()
     if request.method == "POST":
-        form = taskForm(request.POST)
-        if form.is_valid():
-            tform = Tasks();
-            tform.title = form.cleaned_data['title']
-            tform.list_id = int(listid)
-            tform.save()
+        newTaskForm = taskForm(request.POST)
+        if newTaskForm.is_valid():
+            newRow = Tasks();
+            newRow.title = newTaskForm.cleaned_data['title']
+            newRow.list_id = int(listid)
+            newRow.save()
         else:
-            form = taskForm()
+            newTaskForm = taskForm()
 
     return render(request, 'tasks.html', {
         'PageTitle': "CeDoTasks - Tasks",
         'task': Tasks.objects.filter(list_id=listid),
-        'form': form
+        'newTaskForm': newTaskForm
     })
