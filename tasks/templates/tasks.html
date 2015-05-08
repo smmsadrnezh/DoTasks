@@ -1,29 +1,32 @@
-<div class="top-head">
-    <h1>CeDoTasks</h1>
+{% extends "layout.html" %}
+{% block pageBody %}
+    <div class="top-head">
+        <h1>CeDoTasks</h1>
 
-    <h2>THINGS TO DO</h2>
-</div>
-<div class="container">
-    <form action="">
-        <div class="input">
-            <input id="todo-input" type="text">
-            <input type="submit" value="Add">
-        </div>
-    </form>
-    <form id="task-list">
-        <!-- To Do List Item -->
-        <ul>
-                    {% for item in task %}
+        <h2>THINGS TO DO</h2>
+    </div>
+    <div class="container">
+        <form action="." method="post">
+            <div class="input">
+                {{ form.title }}
+                <input type="submit" value="Add">
+            </div>
+        </form>
+        <form id="task-list">
+            <!-- To Do List Item -->
+            <ul>
+                {% for item in task %}
 
-            <li>
-                <input id="item-1" name="id" value="1" type="checkbox">
-                <label for="item-1">{{ item.title }}</label>
-                <a class="delete" href="#">&#10008;</a>
-            </li>
-                    {% endfor %}
+                    <li>
+                        <input id="item-1" name="id" value="1" type="checkbox">
+                        {{ item.title }}
+                        <a class="delete" href="#">&#10008;</a>
+                    </li>
+                {% endfor %}
 
-        </ul>
-        <button type="submit">Done</button>
+            </ul>
+            <button type="submit">Done</button>
 
-    </form>
-</div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,12 +1,22 @@
-from django.http import HttpResponse
-from django.template.loader import get_template
-from django.template import Context
+from django.shortcuts import render
+
+from django.http import HttpResponseRedirect
 
 from tasks.models import Tasks
+from tasks.forms import taskForm
+
 
 def tasks(request, listid):
-    t = get_template('tasks.html')
-    pageHtml = t.render(Context({'task': Tasks.objects.filter(list_id=listid)}))
-    t = get_template('layout.html')
-    html = t.render(Context({'pageBody': pageHtml, 'PageTitle': "CeDoTasks - Lists"}))
-    return HttpResponse(html)
+    form = taskForm()
+    if request.method == "POST":
+        form = taskForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/thanks/')
+        else:
+            form = taskForm()
+
+    return render(request, 'tasks.html', {
+        'PageTitle': "CeDoTasks - Tasks",
+        'task': Tasks.objects.filter(list_id=listid),
+        'form': form
+    })
