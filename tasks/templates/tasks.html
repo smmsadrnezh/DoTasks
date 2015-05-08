@@ -13,11 +13,15 @@
     <form id="task-list">
         <!-- To Do List Item -->
         <ul>
+                    {% for item in task %}
+
             <li>
                 <input id="item-1" name="id" value="1" type="checkbox">
-                <label for="item-1">{{ task.title }}</label>
+                <label for="item-1">{{ item.title }}</label>
                 <a class="delete" href="#">&#10008;</a>
             </li>
+                    {% endfor %}
+
         </ul>
         <button type="submit">Done</button>
 

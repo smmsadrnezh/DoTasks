@@ -1,14 +1,16 @@
 <div class="top-head">
     <h1>CeDoTasks</h1>
 
-    <h2>Add A List</h2>
 </div>
 <div class="container">
     <ul>
+        {% for item in list %}
         <li>
-            <a href="{{ lists.id }}">{{ lists.title }}</a>
+            <a href="lists/{{ item.id }}">{{ item.title }}</a>
         </li>
+        {% endfor %}
     </ul>
+    <h2>Add A List</h2>
     <form action="">
         <div class="input">
             <input id="todo-input" type="text">

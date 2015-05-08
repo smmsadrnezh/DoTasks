@@ -4,8 +4,6 @@ from django.template import Context
 
 from lists.models import Lists
 
-
-# Create your views here.
 def home(request):
     t = get_template('lists.html')
     pageHtml = t.render(Context({'list': Lists.objects.all}))

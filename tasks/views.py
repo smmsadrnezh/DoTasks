@@ -4,12 +4,9 @@ from django.template import Context
 
 from tasks.models import Tasks
 
-
-
-# Create your views here.
-def tasks(request, list_id):
+def tasks(request, listid):
     t = get_template('tasks.html')
-    pageHtml = t.render({'task': Tasks.get(id=list_id)})
+    pageHtml = t.render(Context({'task': Tasks.objects.filter(list_id=listid)}))
     t = get_template('layout.html')
     html = t.render(Context({'pageBody': pageHtml, 'PageTitle': "CeDoTasks - Lists"}))
     return HttpResponse(html)
