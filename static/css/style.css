@@ -61,7 +61,7 @@ li {
     color: #666;
 }
 
-li a.delete {
+li .deleted {
     background: #999;
     color: #fff;
     text-decoration: none;
@@ -70,7 +70,7 @@ li a.delete {
     border-radius: 5px;
 }
 
-li a.delete:hover {
+li .deleted:hover {
     background: #C22A00;
 }
 

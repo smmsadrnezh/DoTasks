@@ -14,19 +14,21 @@
             </div>
         </form>
         <form action="." method="post" id="task-list">
+            {% csrf_token %}
             <!-- To Do List Item -->
             <ul>
                 {% for item in task %}
-
                     <li>
-                        <input id="item-1" name="id" value="1" type="checkbox">
+                        Del <input class="deleted" type="checkbox" value="{{ item.id }}" name="Deletechoices[]">
+                        Don <input type="checkbox" value="{{ item.id }}" name="Donechoices[]">
                         {{ item.title }}
-                        <a class="delete" href="#">&#10008;</a>
                     </li>
                 {% endfor %}
 
             </ul>
-            <button type="submit">Done</button>
+            <button type="submit" name="done">Done</button>
+            <button type="submit" name="delete">Delete</button>
+
 
         </form>
     </div>
