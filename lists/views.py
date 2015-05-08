@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
 
 from lists.models import Lists
 from lists.forms import ListForm
@@ -10,7 +9,9 @@ def home(request):
     if request.method == "POST":
         form = ListForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('/thanks/')
+            tform = Lists()
+            tform.title = form.cleaned_data['title']
+            tform.save()
         else:
             form = ListForm()
 

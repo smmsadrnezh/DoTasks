@@ -1,7 +1,5 @@
 from django.shortcuts import render
 
-from django.http import HttpResponseRedirect
-
 from tasks.models import Tasks
 from tasks.forms import taskForm
 
