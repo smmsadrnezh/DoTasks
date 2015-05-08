@@ -11,7 +11,10 @@ def tasks(request, listid):
     if request.method == "POST":
         form = taskForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect('/thanks/')
+            tform = Tasks();
+            tform.title = form.cleaned_data['title']
+            tform.list_id = int(listid)
+            tform.save()
         else:
             form = taskForm()
 
