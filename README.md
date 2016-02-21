@@ -2,9 +2,9 @@
 
 ## Description
 
-CeDoTasks is to-do list and task manager website.
+CeDoTasks is to-do list and task manager website created by Django web framework.
 
-[Assignment 2 Description](http://webcour.se/media/materials/assignment2.html)
+In the frontpage you have various lists and you may add or remove them and if you click on each you can see it's content and add or remove tasks from the list or mark them as done. if you mark the task it moves to "done tasks" list.
 
 ## Code Developer
 
